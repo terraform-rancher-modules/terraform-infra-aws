@@ -15,7 +15,7 @@ variable "docker_install_url" {
 }
 
 variable "aws_secret_key" {
-  default = "X0k5FYwj+42GJwuJwPkYxGKJeNbVOW17wNl4oeTi"
+  default = ""
 }
 
 variable "prefix" {
@@ -24,5 +24,5 @@ variable "prefix" {
 
 
 variable "aws_access_key" {
-  default = "AKIAQNIJOS7WI4TREDWF"
+  default = ""
 }
