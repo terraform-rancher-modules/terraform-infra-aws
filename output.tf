@@ -7,5 +7,6 @@ output "instances_private_ip" {
 }
 
 output "ssh_key_path" {
-  value = local.create_new_key_pair ? local.new_key_pair_path : var.ssh_key_pair_path
+  depends_on = [aws_instance.instance[0]]
+  value      = local.create_new_key_pair ? local.new_key_pair_path : var.ssh_key_pair_path
 }
