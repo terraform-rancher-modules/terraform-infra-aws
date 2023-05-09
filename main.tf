@@ -1,7 +1,8 @@
 # Condition to use an existing keypair if a keypair file is also provided
 locals {
-  use_existing_key_pair = var.ssh_key_pair_name != null && var.ssh_private_key_path != null ? true : false
+  use_existing_key_pair = var.ssh_key_pair_name != null && var.ssh_key_pair_path != null ? true : false
   create_new_key_pair   = var.create_ssh_key_pair || !local.use_existing_key_pair ? true : false
+  new_key_pair_path     = var.ssh_private_key_path != null ? var.ssh_private_key_path : "${path.cwd}/${var.prefix}-ssh_private_key.pem"
 }
 
 data "aws_subnet" "subnet" {
@@ -16,7 +17,7 @@ resource "tls_private_key" "ssh_private_key" {
 
 resource "local_file" "private_key_pem" {
   count           = local.create_new_key_pair ? 1 : 0
-  filename        = var.ssh_private_key_path != null ? var.ssh_private_key_path : "${path.cwd}/${var.prefix}/ssh_private_key.pem"
+  filename        = local.new_key_pair_path
   content         = tls_private_key.ssh_private_key[0].private_key_openssh
   file_permission = "0400"
 }

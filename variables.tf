@@ -68,6 +68,7 @@ variable "ssh_key_pair_path" {
 }
 
 variable "ssh_private_key_path" {
+  type        = string
   description = "Path to write the generated SSH private key"
   default     = null
 }
