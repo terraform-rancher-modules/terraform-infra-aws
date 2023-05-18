@@ -5,3 +5,7 @@ output "instances_public_ip" {
 output "instances_private_ip" {
   value =  module.upstream-cluster.instances_private_ip
 }
+
+output "instances_ips" {
+  value = module.upstream-cluster.instances_ips
+}

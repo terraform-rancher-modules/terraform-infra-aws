@@ -1,13 +1,13 @@
-# Required
 variable "aws_access_key" {
   type        = string
   description = "AWS access key used to create infrastructure"
+  default = ""
 }
 
-# Required
 variable "aws_secret_key" {
   type        = string
   description = "AWS secret key used to create AWS infrastructure"
+  default = ""
 }
 
 variable "aws_region" {
@@ -25,7 +25,7 @@ variable "prefix" {
 variable "instance_type" {
   type        = string
   description = "Instance type used for all EC2 instances"
-  default     = "t3a.medium"
+  default     = "t3.medium"
 }
 
 variable "instance_disk_size" {
